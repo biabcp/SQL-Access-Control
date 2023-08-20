@@ -1,0 +1,3 @@
+-- Grant SELECT access to auditor for a limited time
+GRANT SELECT ON dbo.financial_data TO external_auditor
+WITH EXPIRATION = '2023-12-31T23:59:59';
