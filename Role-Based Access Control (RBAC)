@@ -1,0 +1,11 @@
+-- Create roles
+CREATE ROLE administrator;
+CREATE ROLE manager;
+CREATE ROLE analyst;
+CREATE ROLE user;
+
+-- Grant permissions based on roles
+GRANT EXECUTE ON dbo.generate_report TO administrator, manager, analyst;
+GRANT SELECT, UPDATE, DELETE ON dbo.employee_data TO administrator, manager;
+GRANT SELECT ON dbo.employee_data TO analyst, user;
+-- ...
