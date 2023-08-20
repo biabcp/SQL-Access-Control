@@ -1,0 +1,12 @@
+-- Create a function to determine row-level access
+CREATE FUNCTION salesperson_access(@salesperson_id INT)
+RETURNS TABLE
+WITH SCHEMABINDING
+AS
+    RETURN SELECT 1 AS access
+    WHERE @salesperson_id = USER_ID();
+
+-- Apply row-level security to sales data
+CREATE SECURITY POLICY sales_security
+ADD FILTER PREDICATE dbo.salesperson_access(salesperson_id) ON dbo.sales
+WITH (STATE = ON);
