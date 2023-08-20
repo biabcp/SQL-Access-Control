@@ -1,0 +1,10 @@
+-- Create schema for department-specific data
+CREATE SCHEMA hr;
+CREATE SCHEMA marketing;
+-- ...
+
+-- Grant access to HR department for HR schema
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::hr TO hr_department;
+
+-- Grant access to Marketing department for Marketing schema
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::marketing TO marketing_department;
